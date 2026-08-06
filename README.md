@@ -63,3 +63,9 @@ git commit -m "Update PilotSharedSource submodule"
 - Ensure CI checks out submodules (`submodules: recursive` or equivalent).
 - Pin submodule revisions through regular commits in the consuming repository for predictable builds.
 - Do not make local edits inside the submodule directory in consuming repositories; contribute changes to this repository directly.
+
+## Contents
+
+Notable contents of this repository:
+
+1. OpenAPI\PilotApi_v1.yaml - An OpenAPI specification for an API based upon the Northwind database.

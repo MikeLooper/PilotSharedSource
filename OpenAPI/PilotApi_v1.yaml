@@ -1,0 +1,1781 @@
+openapi: 3.1.1
+info:
+  title: PilotApiDotNet
+  description: A proof of concept API to explore best-practices and new ideas, based upon the Northwind database. This API is intended to be a reference implementation for building APIs.
+  contact:
+    name: Michael Looper
+    url: https://github.com/MikeLooper
+    email: MikelLooper@gmail.com
+  license:
+    name: MIT
+    url: https://opensource.org
+  version: 1.0.0
+  summary: Proof of concept API for the Northwind database.
+servers:
+  - url: http://localhost:53060/
+paths:
+  /categories/get-all:
+    get:
+      tags:
+        - Categories
+      summary: Gets all DTO objects from the category table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CategoriesDto"
+  /categories/get/{categoryId}:
+    get:
+      tags:
+        - Categories
+      summary: Gets a category record by its ID.
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoriesDto"
+  /categories/add:
+    post:
+      tags:
+        - Categories
+      summary: Adds a new DTO object of a category record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoriesDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/CategoriesDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /categories/update:
+    put:
+      tags:
+        - Categories
+      summary: Updates an existing DTO object of a category record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoriesDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/CategoriesDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /categories/delete/{categoryId}:
+    delete:
+      tags:
+        - Categories
+      summary: Deletes a DTO object of a category record by its ID.
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /customers/get-all:
+    get:
+      tags:
+        - Customers
+      summary: Gets all DTO objects of the customer table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CustomersDto"
+  /customers/get/{customerId}:
+    get:
+      tags:
+        - Customers
+      summary: Gets a customer record by its ID.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomersDto"
+  /customers/add:
+    post:
+      tags:
+        - Customers
+      summary: Adds a new customer record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/CustomersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /customers/update:
+    put:
+      tags:
+        - Customers
+      summary: Updates an existing customer record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/CustomersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /customers/delete/{customerId}:
+    delete:
+      tags:
+        - Customers
+      summary: Deletes a customer record by its ID.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /employees/get-all:
+    get:
+      tags:
+        - Employees
+      summary: Gets all DTO objects from the employee table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EmployeesDto"
+  /employees/get/{employeeId}:
+    get:
+      tags:
+        - Employees
+      summary: Gets an employee record by its ID.
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeesDto"
+  /employees/add:
+    post:
+      tags:
+        - Employees
+      summary: Adds a new employee record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeesDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/EmployeesDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /employees/update:
+    put:
+      tags:
+        - Employees
+      summary: Updates an existing employee record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeesDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/EmployeesDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /employees/delete/{employeeId}:
+    delete:
+      tags:
+        - Employees
+      summary: Deletes an employee record by its ID.
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /order-details/get-all:
+    get:
+      tags:
+        - OrderDetails
+      summary: Gets all DTO objects from the orderdetails table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OrderDetailsDto"
+  /order-details/get/product/{productId}/order/{orderId}:
+    get:
+      tags:
+        - OrderDetails
+      summary: Gets a DTO object of the orderdetails record by its IDs.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderDetailsDto"
+  /order-details/add:
+    post:
+      tags:
+        - OrderDetails
+      summary: Adds a new orderdetails record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderDetailsDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/OrderDetailsDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /order-details/update:
+    put:
+      tags:
+        - OrderDetails
+      summary: Updates an existing orderdetails record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderDetailsDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/OrderDetailsDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /order-details/delete/product/{productId}/order/{orderId}:
+    delete:
+      tags:
+        - OrderDetails
+      summary: Deletes a orderdetails record of the given type by its IDs.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /orders/get-all:
+    get:
+      tags:
+        - Orders
+      summary: Gets all DTO objects from the order table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OrdersDto"
+  /orders/get/{orderId}:
+    get:
+      tags:
+        - Orders
+      summary: Gets a DTO object of the order record by its ID.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrdersDto"
+  /orders/add:
+    post:
+      tags:
+        - Orders
+      summary: Adds a new order record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrdersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/OrdersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /orders/update:
+    put:
+      tags:
+        - Orders
+      summary: Updates an existing order record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrdersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/OrdersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /orders/delete/{orderId}:
+    delete:
+      tags:
+        - Orders
+      summary: Deletes a order record by its ID.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /products/get-all:
+    get:
+      tags:
+        - Products
+      summary: Gets all DTO objects from the product table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProductsDto"
+  /products/get/{productId}:
+    get:
+      tags:
+        - Products
+      summary: Gets a DTO object of the product record by its ID.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductsDto"
+  /products/add:
+    post:
+      tags:
+        - Products
+      summary: Adds a new product record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductsDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/ProductsDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /products/update:
+    put:
+      tags:
+        - Products
+      summary: Updates an existing product record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductsDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/ProductsDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /products/delete/{productId}:
+    delete:
+      tags:
+        - Products
+      summary: Deletes a product record by its ID.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /shippers/get-all:
+    get:
+      tags:
+        - Shippers
+      summary: Gets all DTO objects from the shipper table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ShippersDto"
+  /shippers/get/{shipperId}:
+    get:
+      tags:
+        - Shippers
+      summary: Gets a DTO object of a shipper record by its ID.
+      parameters:
+        - name: shipperId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShippersDto"
+  /shippers/add:
+    post:
+      tags:
+        - Shippers
+      summary: Adds a new shipper record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShippersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/ShippersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /shippers/update:
+    put:
+      tags:
+        - Shippers
+      summary: Updates an existing shipper record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShippersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/ShippersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /shippers/delete/{shipperId}:
+    delete:
+      tags:
+        - Shippers
+      summary: Deletes a shipper record by its ID.
+      parameters:
+        - name: shipperId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /suppliers/get-all:
+    get:
+      tags:
+        - Suppliers
+      summary: Gets all DTO objects from the supplier table.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SuppliersDto"
+  /suppliers/get/{supplierId}:
+    get:
+      tags:
+        - Suppliers
+      summary: Gets a DTO object of the supplier record by its ID.
+      parameters:
+        - name: supplierId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuppliersDto"
+  /suppliers/add:
+    post:
+      tags:
+        - Suppliers
+      summary: Adds a new supplier record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SuppliersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/SuppliersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddResponseInt"
+  /suppliers/update:
+    put:
+      tags:
+        - Suppliers
+      summary: Updates an existing supplier record.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SuppliersDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/SuppliersDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /suppliers/delete/{supplierId}:
+    delete:
+      tags:
+        - Suppliers
+      summary: Deletes a supplier record by its ID.
+      parameters:
+        - name: supplierId
+          in: path
+          required: true
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+          content:
+            application/json: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /healthcheck:
+    get:
+      tags:
+        - System
+      summary: Return an OK.
+      parameters:
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /about:
+    get:
+      tags:
+        - System
+      summary: Returns application metadata and optional configuration details.
+      parameters:
+        - name: show-details
+          in: query
+          schema:
+            type: boolean
+            default: false
+        - name: ApiVersion
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AboutResponse"
+components:
+  schemas:
+    AboutResponse:
+      type: object
+      properties:
+        apiVersion:
+          type:
+            - "null"
+            - string
+        applicationConfiguration:
+          oneOf:
+            - type: "null"
+            - $ref: "#/components/schemas/IApplicationConfiguration"
+        buildVersion:
+          type:
+            - "null"
+            - string
+        deployDate:
+          type:
+            - "null"
+            - string
+        name:
+          type:
+            - "null"
+            - string
+    AddResponseInt:
+      type: object
+      properties:
+        id:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int64
+    CategoriesDto:
+      required:
+        - categoryID
+        - categoryName
+      type: object
+      properties:
+        categoryID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+        categoryName:
+          type:
+            - "null"
+            - string
+        description:
+          type:
+            - "null"
+            - string
+        picture:
+          type:
+            - "null"
+            - string
+          format: byte
+    CustomersDto:
+      required:
+        - companyName
+        - customerID
+      type: object
+      properties:
+        address:
+          type:
+            - "null"
+            - string
+        city:
+          type:
+            - "null"
+            - string
+        companyName:
+          type:
+            - "null"
+            - string
+        contactName:
+          type:
+            - "null"
+            - string
+        contactTitle:
+          type:
+            - "null"
+            - string
+        country:
+          type:
+            - "null"
+            - string
+        customerID:
+          type:
+            - "null"
+            - string
+        fax:
+          type:
+            - "null"
+            - string
+        phone:
+          type:
+            - "null"
+            - string
+        postalCode:
+          type:
+            - "null"
+            - string
+        region:
+          type:
+            - "null"
+            - string
+    DataConnectionConfiguration:
+      type: object
+      properties:
+        connectTimeout:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          description: Gets or sets the connection timeout in seconds. A value of 0
+            indicates no timeout.
+          format: int32
+        dataSourceName:
+          type:
+            - "null"
+            - string
+          description: "Gets or sets the name of the related data source settings
+            section.\r
+
+            This value will match an Application.DataSources[???].DataSourceName
+            setting."
+        host:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the data source host (e.g., "localhost")
+        password:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the data source user password.
+        port:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          description: Gets or sets the data source port number. A value of null indicates
+            the default port for the specified data source type.
+          format: int32
+        userName:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the data source user name.
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: Configuration for a data source connection.
+    DataSourceConfiguration:
+      type: object
+      properties:
+        dataSource:
+          type:
+            - "null"
+            - string
+          description: "Gets or sets the name of the data source (aka: a database)."
+        dataSourceEnum:
+          description: "Gets or sets the data source type.\r
+
+            This will one of the DataSourceTypes options."
+          $ref: "#/components/schemas/DataSourceTypes"
+        dataSourceName:
+          type:
+            - "null"
+            - string
+          description: "Gets or sets the name of the current data source settings
+            section.\r
+
+            This value will match an
+            Application.DataConnections[???].DataSourceName setting."
+        dataSourceType:
+          type:
+            - "null"
+            - string
+          description: "Gets or sets the data source type (e.g., \"SqlServer\",
+            \"PostgreSQL\").\r
+
+            This value must match one of the DataSourceTypes options, in string
+            form."
+        schema:
+          type:
+            - "null"
+            - string
+          description: "Gets or sets the data source schema (e.g., \"dbo\")\r
+
+            For best results, do not include delimiters ([,],\") on this value."
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: A base class for configuration objects.
+    DataSourceTypes:
+      type: integer
+      description: Enums for the available data sources.
+    EmployeesDto:
+      required:
+        - employeeID
+        - firstName
+        - lastName
+      type: object
+      properties:
+        address:
+          type:
+            - "null"
+            - string
+        birthDate:
+          type:
+            - "null"
+            - string
+          format: date-time
+        city:
+          type:
+            - "null"
+            - string
+        country:
+          type:
+            - "null"
+            - string
+        employeeID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+        extension:
+          type:
+            - "null"
+            - string
+        firstName:
+          type:
+            - "null"
+            - string
+        hireDate:
+          type:
+            - "null"
+            - string
+          format: date-time
+        homePhone:
+          type:
+            - "null"
+            - string
+        lastName:
+          type:
+            - "null"
+            - string
+        notes:
+          type:
+            - "null"
+            - string
+        photo:
+          type:
+            - "null"
+            - string
+          format: byte
+        photoPath:
+          type:
+            - "null"
+            - string
+        postalCode:
+          type:
+            - "null"
+            - string
+        region:
+          type:
+            - "null"
+            - string
+        reportsTo:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+        title:
+          type:
+            - "null"
+            - string
+        titleOfCourtesy:
+          type:
+            - "null"
+            - string
+    IApplicationConfiguration:
+      type: object
+      properties:
+        dataConnections:
+          type:
+            - "null"
+            - array
+          items:
+            $ref: "#/components/schemas/DataConnectionConfiguration"
+          description: Gets or sets the list of data connection configurations for the
+            application.
+        dataSources:
+          type:
+            - "null"
+            - array
+          items:
+            $ref: "#/components/schemas/DataSourceConfiguration"
+          description: Gets or sets the list of data source configurations for the
+            application.
+        openApi:
+          oneOf:
+            - type: "null"
+            - description: Gets or sets an object with OpenApi settings.
+              $ref: "#/components/schemas/OpenApiConfiguration"
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: Configuration for the application.
+    OpenApiConfiguration:
+      type: object
+      properties:
+        contact:
+          oneOf:
+            - type: "null"
+            - description: Gets or sets a Contact object.
+              $ref: "#/components/schemas/OpenApiContactConfiguration"
+        description:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the OpenAPI Description.
+        license:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the OpenAPI License.
+        summary:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the OpenAPI Summary.
+        title:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the OpenAPI Title.
+        version:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the OpenAPI Version.
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: A base class for configuration objects.
+    OpenApiContactConfiguration:
+      type: object
+      properties:
+        email:
+          type:
+            - "null"
+            - string
+          description: Gets or sets an contactEmail.
+        name:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the contact Name.
+        url:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the URL for the contact.
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: A base class for configuration objects.
+    OrderDetailsDto:
+      required:
+        - discount
+        - orderID
+        - productID
+        - quantity
+        - unitPrice
+      type: object
+      properties:
+        discount:
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$
+          type:
+            - number
+            - string
+          format: float
+        orderID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+        productID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+        quantity:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int16
+        unitPrice:
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?$
+          type:
+            - number
+            - string
+          format: double
+    OrdersDto:
+      required:
+        - orderID
+      type: object
+      properties:
+        customerID:
+          type:
+            - "null"
+            - string
+        employeeID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+        freight:
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?$
+          type:
+            - "null"
+            - number
+            - string
+          format: double
+        orderDate:
+          type:
+            - "null"
+            - string
+          format: date-time
+        orderID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+        requiredDate:
+          type:
+            - "null"
+            - string
+          format: date-time
+        shipAddress:
+          type:
+            - "null"
+            - string
+        shipCity:
+          type:
+            - "null"
+            - string
+        shipCountry:
+          type:
+            - "null"
+            - string
+        shipName:
+          type:
+            - "null"
+            - string
+        shippedDate:
+          type:
+            - "null"
+            - string
+          format: date-time
+        shipPostalCode:
+          type:
+            - "null"
+            - string
+        shipRegion:
+          type:
+            - "null"
+            - string
+        shipVia:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+            - "null"
+            - string
+        title:
+          type:
+            - "null"
+            - string
+        status:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+        detail:
+          type:
+            - "null"
+            - string
+        instance:
+          type:
+            - "null"
+            - string
+    ProductsDto:
+      required:
+        - productID
+        - productName
+      type: object
+      properties:
+        categoryID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+        discontinued:
+          type: boolean
+        productID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+        productName:
+          type:
+            - "null"
+            - string
+        quantityPerUnit:
+          type:
+            - "null"
+            - string
+        reorderLevel:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int16
+        supplierID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+        unitPrice:
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?$
+          type:
+            - "null"
+            - number
+            - string
+          format: double
+        unitsInStock:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int16
+        unitsOnOrder:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int16
+    ShippersDto:
+      required:
+        - companyName
+        - shipperID
+      type: object
+      properties:
+        companyName:
+          type:
+            - "null"
+            - string
+        phone:
+          type:
+            - "null"
+            - string
+        shipperID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+    SuppliersDto:
+      required:
+        - companyName
+        - supplierID
+      type: object
+      properties:
+        address:
+          type:
+            - "null"
+            - string
+        city:
+          type:
+            - "null"
+            - string
+        companyName:
+          type:
+            - "null"
+            - string
+        contactName:
+          type:
+            - "null"
+            - string
+        contactTitle:
+          type:
+            - "null"
+            - string
+        country:
+          type:
+            - "null"
+            - string
+        fax:
+          type:
+            - "null"
+            - string
+        homePage:
+          type:
+            - "null"
+            - string
+        phone:
+          type:
+            - "null"
+            - string
+        postalCode:
+          type:
+            - "null"
+            - string
+        region:
+          type:
+            - "null"
+            - string
+        supplierID:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          format: int32
+tags:
+  - name: Categories
+  - name: Customers
+  - name: Employees
+  - name: OrderDetails
+  - name: Orders
+  - name: Products
+  - name: Shippers
+  - name: Suppliers
+  - name: System
