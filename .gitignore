@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# PowerShell local artifacts
+# PSReadLine command history (typically user-local, occasionally copied into repos)
+ConsoleHost_history.txt
+# Start-Transcript default naming pattern
+PowerShell_transcript.*.txt
+# Common ad-hoc history/export files
+*.ps1history
+# PowerShell extension/module analysis cache artifacts
+ModuleAnalysisCache
+*.psscache
