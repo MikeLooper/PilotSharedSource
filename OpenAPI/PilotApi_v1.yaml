@@ -85,11 +85,6 @@ paths:
           in: header
           schema:
             type: string
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
       responses:
         "200":
           description: OK
@@ -117,6 +112,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/categories/get/{categoryId}:
     get:
       tags:
@@ -134,11 +131,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -166,6 +158,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/categories/add:
     post:
       tags:
@@ -174,11 +168,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -215,6 +204,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/categories/update:
     put:
       tags:
@@ -223,11 +214,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -268,6 +254,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/categories/delete/{categoryId}:
     delete:
       tags:
@@ -285,11 +273,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -321,6 +304,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/customers/get-all:
     get:
       tags:
@@ -347,11 +332,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -381,6 +361,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/customers/get/{customerId}:
     get:
       tags:
@@ -394,11 +376,6 @@ paths:
             type: string
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -426,6 +403,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/customers/add:
     post:
       tags:
@@ -434,11 +413,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -475,6 +449,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/customers/update:
     put:
       tags:
@@ -483,11 +459,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -528,6 +499,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/customers/delete/{customerId}:
     delete:
       tags:
@@ -541,11 +514,6 @@ paths:
             type: string
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -577,6 +545,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/employees/get-all:
     get:
       tags:
@@ -603,11 +573,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -637,6 +602,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/employees/get/{employeeId}:
     get:
       tags:
@@ -654,11 +621,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -686,6 +648,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/employees/add:
     post:
       tags:
@@ -694,11 +658,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -735,6 +694,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/employees/update:
     put:
       tags:
@@ -743,11 +704,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -788,6 +744,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/employees/delete/{employeeId}:
     delete:
       tags:
@@ -805,11 +763,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -841,6 +794,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orderdetails/get-all:
     get:
       tags:
@@ -867,11 +822,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -901,6 +851,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orderdetails/get/product/{productId}/order/{orderId}:
     get:
       tags:
@@ -929,11 +881,6 @@ paths:
           in: header
           schema:
             type: string
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
       responses:
         "200":
           description: OK
@@ -959,6 +906,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orderdetails/add:
     post:
       tags:
@@ -967,11 +916,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1008,6 +952,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orderdetails/update:
     put:
       tags:
@@ -1016,11 +962,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1061,6 +1002,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orderdetails/delete/product/{productId}/order/{orderId}:
     delete:
       tags:
@@ -1087,11 +1030,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1123,6 +1061,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orders/get-all:
     get:
       tags:
@@ -1149,11 +1089,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1183,6 +1118,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orders/get/{orderId}:
     get:
       tags:
@@ -1200,11 +1137,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1232,6 +1164,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orders/add:
     post:
       tags:
@@ -1240,11 +1174,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1281,6 +1210,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orders/update:
     put:
       tags:
@@ -1289,11 +1220,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1334,6 +1260,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/orders/delete/{orderId}:
     delete:
       tags:
@@ -1351,11 +1279,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1387,6 +1310,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/products/get-all:
     get:
       tags:
@@ -1413,11 +1338,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1447,6 +1367,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/products/get/{productId}:
     get:
       tags:
@@ -1464,11 +1386,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1496,6 +1413,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/products/add:
     post:
       tags:
@@ -1504,11 +1423,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1545,6 +1459,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/products/update:
     put:
       tags:
@@ -1553,11 +1469,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1598,6 +1509,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/products/delete/{productId}:
     delete:
       tags:
@@ -1615,11 +1528,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1651,6 +1559,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/shippers/get-all:
     get:
       tags:
@@ -1677,11 +1587,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1711,6 +1616,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/shippers/get/{shipperId}:
     get:
       tags:
@@ -1728,11 +1635,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1760,6 +1662,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/shippers/add:
     post:
       tags:
@@ -1768,11 +1672,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1809,6 +1708,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/shippers/update:
     put:
       tags:
@@ -1817,11 +1718,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -1862,6 +1758,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/shippers/delete/{shipperId}:
     delete:
       tags:
@@ -1879,11 +1777,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1915,6 +1808,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/suppliers/get-all:
     get:
       tags:
@@ -1941,11 +1836,6 @@ paths:
             default: 20
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -1975,6 +1865,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/suppliers/get/{supplierId}:
     get:
       tags:
@@ -1992,11 +1884,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -2024,6 +1911,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/suppliers/add:
     post:
       tags:
@@ -2032,11 +1921,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -2073,6 +1957,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/suppliers/update:
     put:
       tags:
@@ -2081,11 +1967,6 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       requestBody:
@@ -2126,6 +2007,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
   /v1/suppliers/delete/{supplierId}:
     delete:
       tags:
@@ -2143,11 +2026,6 @@ paths:
             format: int32
         - name: ApiVersion
           in: header
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: true
           schema:
             type: string
       responses:
@@ -2179,6 +2057,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+      security:
+        - Bearer: []
 components:
   schemas:
     AboutResponse:
@@ -2908,6 +2788,12 @@ components:
             - integer
             - string
           format: int32
+  securitySchemes:
+    Bearer:
+      type: http
+      description: JWT bearer authentication
+      scheme: bearer
+      bearerFormat: JWT
 tags:
   - name: System
   - name: Categories
