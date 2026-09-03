@@ -1,7 +1,8 @@
 openapi: 3.1.1
 info:
   title: PilotApiDotNet
-  description: A proof of concept API to explore best-practices and new ideas, based upon the Northwind database. This API is intended to be a reference implementation for building APIs.
+  description: A proof of concept API to explore best-practices and
+    new ideas.
   contact:
     name: Michael Looper
     url: https://github.com/MikeLooper
@@ -10,18 +11,83 @@ info:
     name: MIT
     url: https://opensource.org
   version: 1.0.0
-  summary: Proof of concept API for the Northwind database.
+  summary: Proof of concept API
 servers:
-  - url: http://localhost:53060/
+  - url: http://localhost:55099/
 paths:
-  /categories/get-all:
+  /healthcheck:
+    get:
+      tags:
+        - System
+      summary: Return an OK.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /about:
+    get:
+      tags:
+        - System
+      summary: Returns application metadata and optional configuration details.
+      parameters:
+        - name: show-details
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AboutResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/categories/get-all:
     get:
       tags:
         - Categories
       summary: Gets all DTO objects from the category table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -33,7 +99,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CategoriesDto"
-  /categories/get/{categoryId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/categories/get/{categoryId}:
     get:
       tags:
         - Categories
@@ -52,6 +136,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -59,7 +148,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CategoriesDto"
-  /categories/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/categories/add:
     post:
       tags:
         - Categories
@@ -67,6 +174,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -79,13 +191,31 @@ paths:
               $ref: "#/components/schemas/CategoriesDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /categories/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/categories/update:
     put:
       tags:
         - Categories
@@ -93,6 +223,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -115,7 +250,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /categories/delete/{categoryId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/categories/delete/{categoryId}:
     delete:
       tags:
         - Categories
@@ -134,6 +287,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -145,14 +303,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /customers/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/customers/get-all:
     get:
       tags:
         - Customers
       summary: Gets all DTO objects of the customer table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -164,7 +363,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CustomersDto"
-  /customers/get/{customerId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/customers/get/{customerId}:
     get:
       tags:
         - Customers
@@ -179,6 +396,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -186,7 +408,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CustomersDto"
-  /customers/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/customers/add:
     post:
       tags:
         - Customers
@@ -194,6 +434,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -212,7 +457,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /customers/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/customers/update:
     put:
       tags:
         - Customers
@@ -220,6 +483,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -242,7 +510,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /customers/delete/{customerId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/customers/delete/{customerId}:
     delete:
       tags:
         - Customers
@@ -257,6 +543,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -268,14 +559,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /employees/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/employees/get-all:
     get:
       tags:
         - Employees
       summary: Gets all DTO objects from the employee table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -287,7 +619,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/EmployeesDto"
-  /employees/get/{employeeId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/employees/get/{employeeId}:
     get:
       tags:
         - Employees
@@ -306,6 +656,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -313,7 +668,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeesDto"
-  /employees/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/employees/add:
     post:
       tags:
         - Employees
@@ -321,6 +694,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -339,7 +717,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /employees/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/employees/update:
     put:
       tags:
         - Employees
@@ -347,6 +743,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -369,7 +770,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /employees/delete/{employeeId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/employees/delete/{employeeId}:
     delete:
       tags:
         - Employees
@@ -388,6 +807,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -399,14 +823,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /order-details/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orderdetails/get-all:
     get:
       tags:
         - OrderDetails
       summary: Gets all DTO objects from the orderdetails table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -418,7 +883,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/OrderDetailsDto"
-  /order-details/get/product/{productId}/order/{orderId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orderdetails/get/product/{productId}/order/{orderId}:
     get:
       tags:
         - OrderDetails
@@ -446,6 +929,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -453,7 +941,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrderDetailsDto"
-  /order-details/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orderdetails/add:
     post:
       tags:
         - OrderDetails
@@ -461,6 +967,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -479,7 +990,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /order-details/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orderdetails/update:
     put:
       tags:
         - OrderDetails
@@ -487,6 +1016,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -509,7 +1043,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /order-details/delete/product/{productId}/order/{orderId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orderdetails/delete/product/{productId}/order/{orderId}:
     delete:
       tags:
         - OrderDetails
@@ -537,6 +1089,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -548,14 +1105,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /orders/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orders/get-all:
     get:
       tags:
         - Orders
       summary: Gets all DTO objects from the order table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -567,7 +1165,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/OrdersDto"
-  /orders/get/{orderId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orders/get/{orderId}:
     get:
       tags:
         - Orders
@@ -586,6 +1202,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -593,7 +1214,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrdersDto"
-  /orders/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orders/add:
     post:
       tags:
         - Orders
@@ -601,6 +1240,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -619,7 +1263,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /orders/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orders/update:
     put:
       tags:
         - Orders
@@ -627,6 +1289,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -649,7 +1316,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /orders/delete/{orderId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/orders/delete/{orderId}:
     delete:
       tags:
         - Orders
@@ -668,6 +1353,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -679,14 +1369,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /products/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/products/get-all:
     get:
       tags:
         - Products
       summary: Gets all DTO objects from the product table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -698,7 +1429,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ProductsDto"
-  /products/get/{productId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/products/get/{productId}:
     get:
       tags:
         - Products
@@ -717,6 +1466,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -724,7 +1478,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProductsDto"
-  /products/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/products/add:
     post:
       tags:
         - Products
@@ -732,6 +1504,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -750,7 +1527,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /products/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/products/update:
     put:
       tags:
         - Products
@@ -758,6 +1553,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -780,7 +1580,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /products/delete/{productId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/products/delete/{productId}:
     delete:
       tags:
         - Products
@@ -799,6 +1617,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -810,14 +1633,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /shippers/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/shippers/get-all:
     get:
       tags:
         - Shippers
       summary: Gets all DTO objects from the shipper table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -829,7 +1693,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ShippersDto"
-  /shippers/get/{shipperId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/shippers/get/{shipperId}:
     get:
       tags:
         - Shippers
@@ -848,6 +1730,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -855,7 +1742,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ShippersDto"
-  /shippers/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/shippers/add:
     post:
       tags:
         - Shippers
@@ -863,6 +1768,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -881,7 +1791,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /shippers/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/shippers/update:
     put:
       tags:
         - Shippers
@@ -889,6 +1817,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -911,7 +1844,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /shippers/delete/{shipperId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/shippers/delete/{shipperId}:
     delete:
       tags:
         - Shippers
@@ -930,6 +1881,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -941,14 +1897,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /suppliers/get-all:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/suppliers/get-all:
     get:
       tags:
         - Suppliers
       summary: Gets all DTO objects from the supplier table.
       parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          schema:
+            pattern: ^-?(?:0|[1-9]\d*)$
+            type:
+              - integer
+              - string
+            format: int32
+            default: 20
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       responses:
@@ -960,7 +1957,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/SuppliersDto"
-  /suppliers/get/{supplierId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/suppliers/get/{supplierId}:
     get:
       tags:
         - Suppliers
@@ -979,6 +1994,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -986,7 +2006,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuppliersDto"
-  /suppliers/add:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/suppliers/add:
     post:
       tags:
         - Suppliers
@@ -994,6 +2032,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -1012,7 +2055,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
-  /suppliers/update:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/suppliers/update:
     put:
       tags:
         - Suppliers
@@ -1020,6 +2081,11 @@ paths:
       parameters:
         - name: ApiVersion
           in: header
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          required: true
           schema:
             type: string
       requestBody:
@@ -1042,7 +2108,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /suppliers/delete/{supplierId}:
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+  /v1/suppliers/delete/{supplierId}:
     delete:
       tags:
         - Suppliers
@@ -1061,6 +2145,11 @@ paths:
           in: header
           schema:
             type: string
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         "204":
           description: No Content
@@ -1072,45 +2161,24 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-  /healthcheck:
-    get:
-      tags:
-        - System
-      summary: Return an OK.
-      parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
+        "401":
+          description: Unauthorized
           content:
             application/json:
               schema:
                 type: string
-  /about:
-    get:
-      tags:
-        - System
-      summary: Returns application metadata and optional configuration details.
-      parameters:
-        - name: show-details
-          in: query
-          schema:
-            type: boolean
-            default: false
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
-      responses:
-        "200":
-          description: OK
+        "403":
+          description: Forbidden
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AboutResponse"
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
 components:
   schemas:
     AboutResponse:
@@ -1147,13 +2215,13 @@ components:
           format: int64
     CategoriesDto:
       required:
-        - categoryID
         - categoryName
       type: object
       properties:
         categoryID:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int32
@@ -1317,7 +2385,6 @@ components:
       description: Enums for the available data sources.
     EmployeesDto:
       required:
-        - employeeID
         - firstName
         - lastName
       type: object
@@ -1342,6 +2409,7 @@ components:
         employeeID:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int32
@@ -1421,11 +2489,21 @@ components:
             $ref: "#/components/schemas/DataSourceConfiguration"
           description: Gets or sets the list of data source configurations for the
             application.
+        security:
+          oneOf:
+            - type: "null"
+            - description: Gets or sets an object with Security settings.
+              $ref: "#/components/schemas/SecurityConfiguration"
         openApi:
           oneOf:
             - type: "null"
             - description: Gets or sets an object with OpenApi settings.
               $ref: "#/components/schemas/OpenApiConfiguration"
+        openTelemetry:
+          oneOf:
+            - type: "null"
+            - description: Gets or sets an object with Open Telemetry settings.
+              $ref: "#/components/schemas/OpenTelemetryConfiguration"
         active:
           type: boolean
           description: Gets or sets a flag that indicates whether this settigs object is
@@ -1492,6 +2570,27 @@ components:
           description: Gets or sets a flag that indicates whether this settigs object is
             active.
       description: A base class for configuration objects.
+    OpenTelemetryConfiguration:
+      type: object
+      properties:
+        port:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          description: Gets or sets the OpenTelemetry Port.
+          format: int32
+        server:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the OpenTelemetry Server.
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: A base class for configuration objects.
     OrderDetailsDto:
       required:
         - discount
@@ -1532,8 +2631,6 @@ components:
             - string
           format: double
     OrdersDto:
-      required:
-        - orderID
       type: object
       properties:
         customerID:
@@ -1562,6 +2659,7 @@ components:
         orderID:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int32
@@ -1634,7 +2732,6 @@ components:
             - string
     ProductsDto:
       required:
-        - productID
         - productName
       type: object
       properties:
@@ -1650,6 +2747,7 @@ components:
         productID:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int32
@@ -1693,10 +2791,50 @@ components:
             - integer
             - string
           format: int16
+    SecurityConfiguration:
+      type: object
+      properties:
+        baseUrl:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the base URL of the Security server (e.g.
+            "http://localhost:55001").
+        realm:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the Security realm (e.g. "local-realm").
+        clientId:
+          type:
+            - "null"
+            - string
+          description: Gets or sets the Security client Id (e.g. "local-client").
+        requireHttpsMetadata:
+          type: boolean
+          description: Gets or sets a flag that indicates whether HTTPS is required for
+            the Security metadata endpoint.
+        clockSkewSeconds:
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - integer
+            - string
+          description: Gets or sets the clock skew tolerance, in seconds, applied to token
+            expiry validation.
+          format: int32
+        authority:
+          type:
+            - "null"
+            - string
+          description: Gets the computed Security authority (issuer) URL, based on string?
+            ISecurityConfiguration.BaseUrl and string?
+            ISecurityConfiguration.Realm.
+        active:
+          type: boolean
+          description: Gets or sets a flag that indicates whether this settigs object is
+            active.
+      description: A base class for configuration objects.
     ShippersDto:
-      required:
-        - companyName
-        - shipperID
       type: object
       properties:
         companyName:
@@ -1710,13 +2848,13 @@ components:
         shipperID:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int32
     SuppliersDto:
       required:
         - companyName
-        - supplierID
       type: object
       properties:
         address:
@@ -1766,10 +2904,12 @@ components:
         supplierID:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int32
 tags:
+  - name: System
   - name: Categories
   - name: Customers
   - name: Employees
@@ -1778,4 +2918,3 @@ tags:
   - name: Products
   - name: Shippers
   - name: Suppliers
-  - name: System
