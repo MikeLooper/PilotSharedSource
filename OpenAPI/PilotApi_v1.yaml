@@ -796,7 +796,7 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
       security:
         - Bearer: []
-  /v1/orderdetails/get-all:
+  /v1/order-details/get-all:
     get:
       tags:
         - OrderDetails
@@ -853,7 +853,7 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
       security:
         - Bearer: []
-  /v1/orderdetails/get/product/{productId}/order/{orderId}:
+  /v1/order-details/get/product/{productId}/order/{orderId}:
     get:
       tags:
         - OrderDetails
@@ -908,7 +908,7 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
       security:
         - Bearer: []
-  /v1/orderdetails/add:
+  /v1/order-details/add:
     post:
       tags:
         - OrderDetails
@@ -954,7 +954,7 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
       security:
         - Bearer: []
-  /v1/orderdetails/update:
+  /v1/order-details/update:
     put:
       tags:
         - OrderDetails
@@ -1004,7 +1004,7 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
       security:
         - Bearer: []
-  /v1/orderdetails/delete/product/{productId}/order/{orderId}:
+  /v1/order-details/delete/product/{productId}/order/{orderId}:
     delete:
       tags:
         - OrderDetails
