@@ -226,8 +226,8 @@ paths:
               $ref: "#/components/schemas/CategoriesDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -471,8 +471,8 @@ paths:
               $ref: "#/components/schemas/CustomersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -716,8 +716,8 @@ paths:
               $ref: "#/components/schemas/EmployeesDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -974,8 +974,8 @@ paths:
               $ref: "#/components/schemas/OrderDetailsDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -1232,8 +1232,8 @@ paths:
               $ref: "#/components/schemas/OrdersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -1481,8 +1481,8 @@ paths:
               $ref: "#/components/schemas/ProductsDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -1730,8 +1730,8 @@ paths:
               $ref: "#/components/schemas/ShippersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
@@ -1979,8 +1979,8 @@ paths:
               $ref: "#/components/schemas/SuppliersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "204":
+          description: No Content
           content:
             application/json: {}
         "400":
