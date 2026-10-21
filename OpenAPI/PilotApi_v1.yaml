@@ -425,8 +425,8 @@ paths:
               $ref: "#/components/schemas/CustomersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
@@ -670,8 +670,8 @@ paths:
               $ref: "#/components/schemas/EmployeesDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
@@ -928,8 +928,8 @@ paths:
               $ref: "#/components/schemas/OrderDetailsDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
@@ -1186,8 +1186,8 @@ paths:
               $ref: "#/components/schemas/OrdersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
@@ -1435,8 +1435,8 @@ paths:
               $ref: "#/components/schemas/ProductsDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
@@ -1684,8 +1684,8 @@ paths:
               $ref: "#/components/schemas/ShippersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
@@ -1933,8 +1933,8 @@ paths:
               $ref: "#/components/schemas/SuppliersDto"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Created
           content:
             application/json:
               schema:
