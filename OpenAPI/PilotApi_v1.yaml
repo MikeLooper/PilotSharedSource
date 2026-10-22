@@ -906,7 +906,7 @@ paths:
     delete:
       tags:
         - OrderDetails
-      summary: Deletes a OrderDetails record of the given type by its IDs.
+      summary: Deletes an OrderDetails record of the given type by its IDs.
       parameters:
         - name: productId
           in: path
@@ -2433,6 +2433,9 @@ components:
           format: int32
     ProblemDetails:
       type: object
+      required:
+        - type
+        - title
       properties:
         type:
           description: A URI reference that identifies the problem type. Typically links to documentation.
@@ -2467,10 +2470,7 @@ components:
             - "null"
             - string
           example: /api/checkout/session_9281a
-        extensions:
-          description: A container for any dynamic, custom metadata you wish to provide to consumers.
-          type: object
-          additionalProperties: true
+      additionalProperties: true
     ProductsDto:
       required:
         - productName
