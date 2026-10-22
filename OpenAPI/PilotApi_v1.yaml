@@ -63,28 +63,10 @@ paths:
         - Categories
       summary: Gets all DTO objects from the category table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -129,10 +111,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -166,10 +146,8 @@ paths:
         - Categories
       summary: Adds a new DTO object of a category record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -212,10 +190,8 @@ paths:
         - Categories
       summary: Updates an existing DTO object of a category record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -271,10 +247,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -312,28 +286,10 @@ paths:
         - Customers
       summary: Gets all DTO objects of the customer table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -374,10 +330,8 @@ paths:
           required: true
           schema:
             type: string
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -411,10 +365,8 @@ paths:
         - Customers
       summary: Adds a new customer record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -457,10 +409,8 @@ paths:
         - Customers
       summary: Updates an existing customer record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -512,10 +462,8 @@ paths:
           required: true
           schema:
             type: string
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -553,28 +501,10 @@ paths:
         - Employees
       summary: Gets all DTO objects from the employee table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -619,10 +549,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -656,10 +584,8 @@ paths:
         - Employees
       summary: Adds a new employee record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -702,10 +628,8 @@ paths:
         - Employees
       summary: Updates an existing employee record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -761,10 +685,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -800,30 +722,12 @@ paths:
     get:
       tags:
         - OrderDetails
-      summary: Gets all DTO objects from the orderdetails table.
+      summary: Gets all DTO objects from the OrderDetails table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -857,7 +761,7 @@ paths:
     get:
       tags:
         - OrderDetails
-      summary: Gets a DTO object of the orderdetails record by its IDs.
+      summary: Gets a DTO object of the OrderDetails record by its IDs.
       parameters:
         - name: productId
           in: path
@@ -877,10 +781,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -912,12 +814,10 @@ paths:
     post:
       tags:
         - OrderDetails
-      summary: Adds a new orderdetails record.
+      summary: Adds a new OrderDetails record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -958,12 +858,10 @@ paths:
     put:
       tags:
         - OrderDetails
-      summary: Updates an existing orderdetails record.
+      summary: Updates an existing OrderDetails record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1008,7 +906,7 @@ paths:
     delete:
       tags:
         - OrderDetails
-      summary: Deletes a orderdetails record of the given type by its IDs.
+      summary: Deletes an OrderDetails record of the given type by its IDs.
       parameters:
         - name: productId
           in: path
@@ -1028,10 +926,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -1069,28 +965,10 @@ paths:
         - Orders
       summary: Gets all DTO objects from the order table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1135,10 +1013,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1172,10 +1048,8 @@ paths:
         - Orders
       summary: Adds a new order record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1218,10 +1092,8 @@ paths:
         - Orders
       summary: Updates an existing order record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1277,10 +1149,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -1318,28 +1188,10 @@ paths:
         - Products
       summary: Gets all DTO objects from the product table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1384,10 +1236,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1421,10 +1271,8 @@ paths:
         - Products
       summary: Adds a new product record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1467,10 +1315,8 @@ paths:
         - Products
       summary: Updates an existing product record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1526,10 +1372,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -1567,28 +1411,10 @@ paths:
         - Shippers
       summary: Gets all DTO objects from the shipper table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1633,10 +1459,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1670,10 +1494,8 @@ paths:
         - Shippers
       summary: Adds a new shipper record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1716,10 +1538,8 @@ paths:
         - Shippers
       summary: Updates an existing shipper record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1775,10 +1595,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -1816,28 +1634,10 @@ paths:
         - Suppliers
       summary: Gets all DTO objects from the supplier table.
       parameters:
-        - name: page
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 0
-        - name: pageSize
-          in: query
-          schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
-            type:
-              - integer
-              - string
-            format: int32
-            default: 20
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/PageQuery'
+        - $ref: '#/components/parameters/PageSizeQuery'
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1882,10 +1682,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -1919,10 +1717,8 @@ paths:
         - Suppliers
       summary: Adds a new supplier record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -1965,10 +1761,8 @@ paths:
         - Suppliers
       summary: Updates an existing supplier record.
       parameters:
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
           application/json:
@@ -2024,10 +1818,8 @@ paths:
               - integer
               - string
             format: int32
-        - name: ApiVersion
-          in: header
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
           description: No Content
@@ -2060,6 +1852,48 @@ paths:
       security:
         - Bearer: []
 components:
+  parameters:
+    ApiVersionHeader:
+      name: X-Api-Version
+      in: header
+      description: The version of the API that should be used for the current call.  If missing, the application default version will be used.
+      required: false
+      schema:
+        type: string
+        example: "1.2.3"
+    CorrelationIdHeader:
+      name: X-Correlation-Id
+      in: header
+      description: Unique identifier used for tracing a transaction across microservices.
+      required: false
+      schema:
+        type: string
+        format: uuid
+        example: "7ea2c7f7-8b46-475d-86f8-7aaaa9e4a35b"
+    PageQuery:
+      name: page
+      in: query
+      description: The number of the page (within a dataset) to start with during data retrieval.
+      required: false
+      schema:
+        pattern: ^-?(?:0|[1-9]\d*)$
+        type:
+          - integer
+          - string
+        format: int32
+        default: 0
+    PageSizeQuery:
+      name: pageSize
+      in: query
+      description: The number of items to return during data retrieval.
+      required: false
+      schema:
+        pattern: ^-?(?:0|[1-9]\d*)$
+        type:
+          - integer
+          - string
+        format: int32
+        default: 20
   schemas:
     AboutResponse:
       type: object
@@ -2216,11 +2050,6 @@ components:
             - "null"
             - string
           description: Gets or sets the data source host (e.g., "localhost")
-        password:
-          type:
-            - "null"
-            - string
-          description: Gets or sets the data source user password.
         port:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -2230,11 +2059,6 @@ components:
           description: Gets or sets the data source port number. A value of null indicates
             the default port for the specified data source type.
           format: int32
-        userName:
-          type:
-            - "null"
-            - string
-          description: Gets or sets the data source user name.
         active:
           type: boolean
           description: Gets or sets a flag that indicates whether this settigs object is
@@ -2609,30 +2433,44 @@ components:
           format: int32
     ProblemDetails:
       type: object
+      required:
+        - type
+        - title
       properties:
         type:
+          description: A URI reference that identifies the problem type. Typically links to documentation.
           type:
             - "null"
             - string
+          example: /errors/AccountNumberNotFound
         title:
+          description: A short, human-readable summary of the problem type. It should not change between occurrences of the same error.
           type:
             - "null"
             - string
+          example: Insufficient Funds
         status:
+          description: The HTTP status code generated by the origin server for this occurrence of the problem.
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
             - string
           format: int32
+          example: 400
         detail:
+          description: A human-readable explanation specific to this occurrence of the problem.
           type:
             - "null"
             - string
+          example: Your current balance is $15.00, but the item costs $20.00.
         instance:
+          description: A URI reference that identifies the specific occurrence of the problem (often the request path).
           type:
             - "null"
             - string
+          example: /api/checkout/session_9281a
+      additionalProperties: true
     ProductsDto:
       required:
         - productName
