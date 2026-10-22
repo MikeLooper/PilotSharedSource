@@ -206,12 +206,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -254,12 +248,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -425,12 +413,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -469,12 +451,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -644,12 +620,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -692,12 +662,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -876,12 +840,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -933,12 +891,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1108,12 +1060,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1156,12 +1102,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1331,12 +1271,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1379,12 +1313,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1554,12 +1482,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1602,12 +1524,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1777,12 +1693,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1825,12 +1735,6 @@ paths:
           description: No Content
           content:
             application/json: {}
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
@@ -1928,17 +1832,17 @@ components:
           format: int64
     AddResponseOrderDetails:
       required:
-        - orderID
-        - productID
+        - orderId
+        - productId
       type: object
       properties:
-        orderID:
+        orderId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
             - string
           format: int32
-        productID:
+        productId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
@@ -1955,7 +1859,7 @@ components:
         - categoryName
       type: object
       properties:
-        categoryID:
+        categoryId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -1978,7 +1882,7 @@ components:
     CustomersDto:
       required:
         - companyName
-        - customerID
+        - customerId
       type: object
       properties:
         address:
@@ -2005,7 +1909,7 @@ components:
           type:
             - "null"
             - string
-        customerID:
+        customerId:
           type:
             - "null"
             - string
@@ -2133,7 +2037,7 @@ components:
           type:
             - "null"
             - string
-        employeeID:
+        employeeId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2321,8 +2225,8 @@ components:
     OrderDetailsDto:
       required:
         - discount
-        - orderID
-        - productID
+        - orderId
+        - productId
         - quantity
         - unitPrice
       type: object
@@ -2333,13 +2237,13 @@ components:
             - number
             - string
           format: float
-        orderID:
+        orderId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
             - string
           format: int32
-        productID:
+        productId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
@@ -2360,11 +2264,11 @@ components:
     OrdersDto:
       type: object
       properties:
-        customerID:
+        customerId:
           type:
             - "null"
             - string
-        employeeID:
+        employeeId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2383,7 +2287,7 @@ components:
             - "null"
             - string
           format: date-time
-        orderID:
+        orderId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2457,7 +2361,7 @@ components:
             - integer
             - string
           format: int32
-          example: 400
+          example: 500
         detail:
           description: A human-readable explanation specific to this occurrence of the problem.
           type:
@@ -2476,7 +2380,7 @@ components:
         - productName
       type: object
       properties:
-        categoryID:
+        categoryId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2485,7 +2389,7 @@ components:
           format: int32
         discontinued:
           type: boolean
-        productID:
+        productId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2506,7 +2410,7 @@ components:
             - integer
             - string
           format: int16
-        supplierID:
+        supplierId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2586,7 +2490,7 @@ components:
           type:
             - "null"
             - string
-        shipperID:
+        shipperId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
@@ -2642,7 +2546,7 @@ components:
           type:
             - "null"
             - string
-        supplierID:
+        supplierId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
