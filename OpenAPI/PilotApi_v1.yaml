@@ -1582,7 +1582,7 @@ components:
           format: int32
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: Configuration for a data source connection.
     DataSourceConfiguration:
@@ -1625,7 +1625,7 @@ components:
             For best results, do not include delimiters ([,],\") on this value."
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: A base class for configuration objects.
     DataSourceTypes:
@@ -1754,7 +1754,7 @@ components:
               $ref: "#/components/schemas/OpenTelemetryConfiguration"
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: Configuration for the application.
     OpenApiConfiguration:
@@ -1792,7 +1792,7 @@ components:
           description: Gets or sets the OpenAPI Version.
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: A base class for configuration objects.
     OpenApiContactConfiguration:
@@ -1815,7 +1815,7 @@ components:
           description: Gets or sets the URL for the contact.
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: A base class for configuration objects.
     OpenTelemetryConfiguration:
@@ -1836,7 +1836,7 @@ components:
           description: Gets or sets the OpenTelemetry Server.
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: A base class for configuration objects.
     OrderDetailsDto:
@@ -2133,7 +2133,7 @@ components:
             ISecurityConfiguration.Realm.
         active:
           type: boolean
-          description: Gets or sets a flag that indicates whether this settigs object is
+          description: Gets or sets a flag that indicates whether this settings object is
             active.
       description: A base class for configuration objects.
     ShippersDto:
