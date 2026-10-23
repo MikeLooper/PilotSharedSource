@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: PilotApiDotNet
+  title: PilotApi
   description: A proof of concept API to explore best-practices and
     new ideas.
   contact:
