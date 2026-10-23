@@ -28,11 +28,7 @@ paths:
               schema:
                 type: string
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
   /about:
     get:
       tags:
@@ -52,11 +48,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AboutResponse"
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
   /v1/categories/get-all:
     get:
       tags:
@@ -76,24 +68,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CategoriesDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/categories/get/{categoryId}:
@@ -120,24 +102,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CategoriesDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/categories/add:
@@ -164,24 +136,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/categories/update:
@@ -206,24 +168,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/categories/delete/{categoryId}:
@@ -248,24 +200,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/customers/get-all:
@@ -287,24 +229,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CustomersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/customers/get/{customerId}:
@@ -327,24 +259,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CustomersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/customers/add:
@@ -371,24 +293,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseString"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/customers/update:
@@ -413,24 +325,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/customers/delete/{customerId}:
@@ -451,24 +353,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/employees/get-all:
@@ -490,24 +382,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/EmployeesDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/employees/get/{employeeId}:
@@ -534,24 +416,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeesDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/employees/add:
@@ -578,24 +450,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/employees/update:
@@ -620,24 +482,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/employees/delete/{employeeId}:
@@ -662,24 +514,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/order-details/get-all:
@@ -701,24 +543,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/OrderDetailsDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/order-details/get/product/{productId}/order/{orderId}:
@@ -754,24 +586,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrderDetailsDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/order-details/add:
@@ -798,24 +620,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseOrderDetails"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/order-details/update:
@@ -840,24 +652,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/order-details/delete/product/{productId}/order/{orderId}:
@@ -891,24 +693,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/orders/get-all:
@@ -930,24 +722,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/OrdersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/orders/get/{orderId}:
@@ -974,24 +756,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrdersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/orders/add:
@@ -1018,24 +790,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/orders/update:
@@ -1060,24 +822,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/orders/delete/{orderId}:
@@ -1102,24 +854,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/products/get-all:
@@ -1141,24 +883,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ProductsDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/products/get/{productId}:
@@ -1185,24 +917,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProductsDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/products/add:
@@ -1229,24 +951,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/products/update:
@@ -1271,24 +983,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/products/delete/{productId}:
@@ -1313,24 +1015,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/shippers/get-all:
@@ -1352,24 +1044,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ShippersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/shippers/get/{shipperId}:
@@ -1396,24 +1078,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ShippersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/shippers/add:
@@ -1440,24 +1112,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/shippers/update:
@@ -1482,24 +1144,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/shippers/delete/{shipperId}:
@@ -1524,24 +1176,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/suppliers/get-all:
@@ -1563,24 +1205,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/SuppliersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/suppliers/get/{supplierId}:
@@ -1607,24 +1239,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuppliersDto"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/suppliers/add:
@@ -1651,24 +1273,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AddResponseInt"
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/suppliers/update:
@@ -1693,24 +1305,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
   /v1/suppliers/delete/{supplierId}:
@@ -1735,24 +1337,14 @@ paths:
           description: No Content
           content:
             application/json: {}
+        "400":
+          $ref: '#/components/responses/BadRequest'
         "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Unauthorized'
         "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                type: string
+          $ref: '#/components/responses/Forbidden'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
+          $ref: '#/components/responses/InternalServerError'
       security:
         - Bearer: []
 components:
@@ -1798,6 +1390,31 @@ components:
           - string
         format: int32
         default: 20
+  responses:
+    BadRequest:
+      description: Bad Request — The server could not understand the request due to invalid syntax or parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsBadRequest'
+    Unauthorized:
+      description: Unauthorized — Authentication is required or the provided credentials are invalid or expired.
+      content:
+        application/json:
+          schema:
+            type: string
+    Forbidden:
+      description: Forbidden — The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            type: string
+    InternalServerError:
+      description: Internal Server Error — An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsInternalServerError'
   schemas:
     AboutResponse:
       type: object
@@ -2335,7 +1952,47 @@ components:
             - integer
             - string
           format: int32
-    ProblemDetails:
+    ProblemDetailsBadRequest:
+      type: object
+      required:
+        - type
+        - title
+      properties:
+        type:
+          description: A URI reference that identifies the problem type. Typically links to documentation.
+          type:
+            - "null"
+            - string
+          example: https://problems-registry.smartbear.com/missing-request-parameter
+        title:
+          description: A short, human-readable summary of the problem type. It should not change between occurrences of the same error.
+          type:
+            - "null"
+            - string
+          example: Missing request parameter
+        status:
+          description: The HTTP status code generated by the origin server for this occurrence of the problem.
+          pattern: ^-?(?:0|[1-9]\d*)$
+          type:
+            - "null"
+            - integer
+            - string
+          format: int32
+          example: 400
+        detail:
+          description: A human-readable explanation specific to this occurrence of the problem.
+          type:
+            - "null"
+            - string
+          example: The request is missing an expected query or path parameter.
+        instance:
+          description: A URI reference that identifies the specific occurrence of the problem (often the request path).
+          type:
+            - "null"
+            - string
+          example: /api/checkout/session_9281a
+      additionalProperties: true
+    ProblemDetailsInternalServerError:
       type: object
       required:
         - type
