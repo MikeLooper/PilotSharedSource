@@ -1414,7 +1414,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsInternalServerError'
+            $ref: '#/components/schemas/ProblemDetails'
   schemas:
     AboutResponse:
       type: object
@@ -1992,7 +1992,7 @@ components:
             - string
           example: /api/checkout/session_9281a
       additionalProperties: true
-    ProblemDetailsInternalServerError:
+    ProblemDetails:
       type: object
       required:
         - type
