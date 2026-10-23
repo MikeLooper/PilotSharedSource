@@ -836,7 +836,7 @@ paths:
     delete:
       tags:
         - Orders
-      summary: Deletes a order record by its ID.
+      summary: Deletes an order record by its ID.
       parameters:
         - name: orderId
           in: path
