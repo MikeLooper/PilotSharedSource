@@ -93,6 +93,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -193,6 +195,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -250,6 +254,8 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 5
+            maxLength: 5
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -346,6 +352,8 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 5
+            maxLength: 5
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -407,6 +415,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -507,6 +517,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -568,6 +580,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - name: orderId
           in: path
           required: true
@@ -577,6 +591,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -677,6 +693,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - name: orderId
           in: path
           required: true
@@ -686,6 +704,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -747,6 +767,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -847,6 +869,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -908,6 +932,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1008,6 +1034,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1069,6 +1097,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1169,6 +1199,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1230,6 +1262,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1330,6 +1364,8 @@ paths:
               - integer
               - string
             format: int32
+            minimum: 1
+            maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1447,6 +1483,8 @@ components:
           type:
             - integer
           format: int64
+          minimum: 1
+          maximum: 2147483647
     AddResponseOrderDetails:
       required:
         - orderId
@@ -1459,18 +1497,23 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         productId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
     AddResponseString:
       type: object
       properties:
         id:
           type:
             - string
+          minLength: 5
     CategoriesDto:
       required:
         - categoryName
@@ -1483,10 +1526,13 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         categoryName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 15
         description:
           type:
             - "null"
@@ -1506,46 +1552,57 @@ components:
           type:
             - "null"
             - string
+          maxLength: 60
         city:
           type:
             - "null"
             - string
+          maxLength: 15
         companyName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 40
         contactName:
           type:
             - "null"
             - string
+          maxLength: 30
         contactTitle:
           type:
             - "null"
             - string
+          maxLength: 30
         country:
           type:
             - "null"
             - string
+          maxLength: 15
         customerId:
           type:
-            - "null"
             - string
+          minLength: 5
+          maxLength: 5
         fax:
           type:
             - "null"
             - string
+          maxLength: 24
         phone:
           type:
             - "null"
             - string
+          maxLength: 24
         postalCode:
           type:
             - "null"
             - string
+          maxLength: 10
         region:
           type:
             - "null"
             - string
+          maxLength: 15
     DataConnectionConfiguration:
       type: object
       properties:
@@ -1641,19 +1698,24 @@ components:
           type:
             - "null"
             - string
+          maxLength: 60
         birthDate:
           type:
             - "null"
             - string
           format: date-time
+          description: Must be earlier than the current date. Valid range is
+            1753-01-01 through 9999-12-31 (SQL Server DATETIME).
         city:
           type:
             - "null"
             - string
+          maxLength: 15
         country:
           type:
             - "null"
             - string
+          maxLength: 15
         employeeId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -1661,27 +1723,35 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         extension:
           type:
             - "null"
             - string
+          maxLength: 4
         firstName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 10
         hireDate:
           type:
             - "null"
             - string
           format: date-time
+          description: Valid range is 1753-01-01 through 9999-12-31 (SQL Server
+            DATETIME).
         homePhone:
           type:
             - "null"
             - string
+          maxLength: 24
         lastName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 20
         notes:
           type:
             - "null"
@@ -1695,14 +1765,17 @@ components:
           type:
             - "null"
             - string
+          maxLength: 255
         postalCode:
           type:
             - "null"
             - string
+          maxLength: 10
         region:
           type:
             - "null"
             - string
+          maxLength: 15
         reportsTo:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -1710,14 +1783,19 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
+          description: The employeeId of this employee's manager.
         title:
           type:
             - "null"
             - string
+          maxLength: 30
         titleOfCourtesy:
           type:
             - "null"
             - string
+          maxLength: 25
     IApplicationConfiguration:
       type: object
       properties:
@@ -1854,30 +1932,44 @@ components:
             - number
             - string
           format: float
+          minimum: 0
+          maximum: 1
+          description: Discount as a fraction of the unit price (0 to 1). Database
+            default is 0.
         orderId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         productId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         quantity:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
             - string
           format: int16
+          minimum: 1
+          maximum: 32767
+          description: Database default is 1.
         unitPrice:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?$
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d{1,4})?$
           type:
             - number
             - string
           format: double
+          minimum: 0
+          maximum: 922337203685477.5807
+          description: Database default is 0.
     OrdersDto:
       type: object
       properties:
@@ -1885,6 +1977,8 @@ components:
           type:
             - "null"
             - string
+          minLength: 5
+          maxLength: 5
         employeeId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -1892,18 +1986,25 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         freight:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?$
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d{1,4})?$
           type:
             - "null"
             - number
             - string
           format: double
+          minimum: -922337203685477.5808
+          maximum: 922337203685477.5807
+          description: Database default is 0.
         orderDate:
           type:
             - "null"
             - string
           format: date-time
+          description: Valid range is 1753-01-01 through 9999-12-31 (SQL Server
+            DATETIME).
         orderId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -1911,40 +2012,52 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         requiredDate:
           type:
             - "null"
             - string
           format: date-time
+          description: Valid range is 1753-01-01 through 9999-12-31 (SQL Server
+            DATETIME).
         shipAddress:
           type:
             - "null"
             - string
+          maxLength: 60
         shipCity:
           type:
             - "null"
             - string
+          maxLength: 15
         shipCountry:
           type:
             - "null"
             - string
+          maxLength: 15
         shipName:
           type:
             - "null"
             - string
+          maxLength: 40
         shippedDate:
           type:
             - "null"
             - string
           format: date-time
+          description: Valid range is 1753-01-01 through 9999-12-31 (SQL Server
+            DATETIME).
         shipPostalCode:
           type:
             - "null"
             - string
+          maxLength: 10
         shipRegion:
           type:
             - "null"
             - string
+          maxLength: 15
         shipVia:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -1952,6 +2065,9 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
+          description: The shipperId of the shipper used for this order.
     ProblemDetailsBadRequest:
       type: object
       required:
@@ -2044,8 +2160,11 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         discontinued:
           type: boolean
+          description: Database default is false.
         productId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -2053,20 +2172,28 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         productName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 40
         quantityPerUnit:
           type:
             - "null"
             - string
+          maxLength: 20
         reorderLevel:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int16
+          minimum: 0
+          maximum: 32767
+          description: Database default is 0.
         supplierId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -2074,25 +2201,38 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
         unitPrice:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?$
+          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d{1,4})?$
           type:
             - "null"
             - number
             - string
           format: double
+          minimum: 0
+          maximum: 922337203685477.5807
+          description: Database default is 0.
         unitsInStock:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int16
+          minimum: 0
+          maximum: 32767
+          description: Database default is 0.
         unitsOnOrder:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
+            - "null"
             - integer
             - string
           format: int16
+          minimum: 0
+          maximum: 32767
+          description: Database default is 0.
     SecurityConfiguration:
       type: object
       properties:
@@ -2137,16 +2277,20 @@ components:
             active.
       description: A base class for configuration objects.
     ShippersDto:
+      required:
+        - companyName
       type: object
       properties:
         companyName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 40
         phone:
           type:
             - "null"
             - string
+          maxLength: 24
         shipperId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -2154,6 +2298,8 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
     SuppliersDto:
       required:
         - companyName
@@ -2163,30 +2309,37 @@ components:
           type:
             - "null"
             - string
+          maxLength: 60
         city:
           type:
             - "null"
             - string
+          maxLength: 15
         companyName:
           type:
-            - "null"
             - string
+          minLength: 1
+          maxLength: 40
         contactName:
           type:
             - "null"
             - string
+          maxLength: 30
         contactTitle:
           type:
             - "null"
             - string
+          maxLength: 30
         country:
           type:
             - "null"
             - string
+          maxLength: 15
         fax:
           type:
             - "null"
             - string
+          maxLength: 24
         homePage:
           type:
             - "null"
@@ -2195,14 +2348,17 @@ components:
           type:
             - "null"
             - string
+          maxLength: 24
         postalCode:
           type:
             - "null"
             - string
+          maxLength: 10
         region:
           type:
             - "null"
             - string
+          maxLength: 15
         supplierId:
           pattern: ^-?(?:0|[1-9]\d*)$
           type:
@@ -2210,6 +2366,8 @@ components:
             - integer
             - string
           format: int32
+          minimum: 1
+          maximum: 2147483647
   securitySchemes:
     Bearer:
       type: http
