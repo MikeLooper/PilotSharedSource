@@ -296,9 +296,16 @@ def test_all_local_references_resolve():
 
 
 @pytest.mark.parametrize("section", ["callbacks", "examples", "headers", "links", "parameters", "pathItems", "requestBodies", "responses", "schemas", "securitySchemes"])
+def test_all_components_are_used(section):
     references = {
         node["$ref"] for _, node in walk(SPEC) if isinstance(node.get("$ref"), str)
     }
+    # Security schemes are referenced by name from security requirements, not by $ref.
+    for _, node in walk(SPEC):
+        if isinstance(node.get("security"), list):
+            for requirement in node["security"]:
+                if isinstance(requirement, dict):
+                    references.update(f"#/components/securitySchemes/{name}" for name in requirement)
     check(
         [
             violation(("components", section, name), f"{name} is never referenced.", "Reference this component, or remove it.")
