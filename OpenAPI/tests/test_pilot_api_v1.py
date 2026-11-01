@@ -289,8 +289,7 @@ def test_all_local_references_resolve():
     check(violations)
 
 
-@pytest.mark.parametrize("section", ["parameters", "responses", "schemas"])
-def test_all_components_are_used(section):
+@pytest.mark.parametrize("section", ["callbacks", "examples", "headers", "links", "parameters", "pathItems", "requestBodies", "responses", "schemas", "securitySchemes"])
     references = {
         node["$ref"] for _, node in walk(SPEC) if isinstance(node.get("$ref"), str)
     }
