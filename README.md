@@ -69,3 +69,63 @@ git commit -m "Update PilotSharedSource submodule"
 Notable contents of this repository:
 
 1. OpenAPI\PilotApi_v1.yaml - An OpenAPI specification for an API based upon the Northwind database.
+2. OpenAPI\tests - Validation tests for the OpenAPI specification.
+
+## Validating the OpenAPI Specification
+
+The tests in `OpenAPI/tests` read `OpenAPI/PilotApi_v1.yaml` directly. They do not need a running API or a database, and they do not modify the specification.
+
+| Check | What it verifies |
+| --- | --- |
+| Document validity | The YAML has no duplicate keys, the document is valid OpenAPI 3.1, every `$ref` resolves, and no component is unused. |
+| Schema consistency | Patterns compile, minimum and maximum values are ordered, required properties exist, and examples and defaults match their schemas. |
+| Endpoint conventions | Each operation is documented and tagged. Each `/v1` operation has bearer security, the shared headers, and the standard responses. Each resource has all five CRUD operations with the expected request and response shapes. |
+| DTO sample payloads | Each DTO accepts valid sample payloads and rejects payloads that break the Northwind database constraints. |
+
+### Running the tests
+
+Python 3.10 or later is required. Run these commands from the repository root.
+
+Windows (PowerShell):
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r OpenAPI/tests/requirements.txt
+python -m pytest OpenAPI/tests
+```
+
+Windows (Command Prompt):
+
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install -r OpenAPI/tests/requirements.txt
+python -m pytest OpenAPI/tests
+```
+
+Linux or macOS:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r OpenAPI/tests/requirements.txt
+python -m pytest OpenAPI/tests
+```
+
+To test a different copy of the specification, set the `OPENAPI_SPEC` environment variable to its path before running `pytest`. From a consuming repository, replace `OpenAPI/tests` with `shared/PilotSharedSource/OpenAPI/tests`.
+
+### Reading the results
+
+- `pytest` exits with `0` when the run succeeds and a non-zero code when any test fails or the specification cannot be loaded, so the command can be used as a CI step.
+- The "Failures" section at the end of the output lists each failure and error, with the line of test code that raised it. Rule violations also give the specification file and line, the problem found there, and how to fix it:
+
+  ```text
+  FAILED: test_schema_is_internally_consistent[#/components/schemas/CategoriesDto]
+    Test code: OpenAPI\tests\test_pilot_api_v1.py:336
+    OpenAPI\PilotApi_v1.yaml:1482 (#/components/schemas/CategoriesDto/required)
+      Problem: categoryName is required but is not defined under properties.
+      Fix: Define categoryName, or remove it from required.
+  ```
+
+- Any other exception is reported as it was raised, with the test code line, so failures caused by unexpected changes can still be traced.

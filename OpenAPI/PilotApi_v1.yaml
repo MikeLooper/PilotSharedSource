@@ -68,6 +68,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CategoriesDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -88,15 +90,11 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -106,6 +104,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CategoriesDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -169,9 +169,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -192,22 +190,16 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -237,6 +229,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CustomersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -269,6 +263,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CustomersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -332,9 +328,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -362,9 +356,7 @@ paths:
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -394,6 +386,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/EmployeesDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -414,15 +408,11 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -432,6 +422,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EmployeesDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -495,9 +487,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -518,22 +508,16 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -563,6 +547,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/OrderDetailsDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -583,28 +569,20 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - name: orderId
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -614,6 +592,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrderDetailsDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -677,9 +657,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -700,35 +678,25 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - name: orderId
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -758,6 +726,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/OrdersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -778,15 +748,11 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -796,6 +762,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrdersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -859,9 +827,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -882,22 +848,16 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -927,6 +887,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ProductsDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -947,15 +909,11 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -965,6 +923,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProductsDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1028,9 +988,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1051,22 +1009,16 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1096,6 +1048,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ShippersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1116,15 +1070,11 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1134,6 +1084,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ShippersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1197,9 +1149,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1220,22 +1170,16 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1265,6 +1209,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/SuppliersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1285,15 +1231,11 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
@@ -1303,6 +1245,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuppliersDto"
+        "204":
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1366,9 +1310,7 @@ paths:
         required: true
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1389,22 +1331,16 @@ paths:
           in: path
           required: true
           schema:
-            pattern: ^-?(?:0|[1-9]\d*)$
             type:
               - integer
-              - string
             format: int32
             minimum: 1
             maximum: 2147483647
-            minLength: 1
-            maxLength: 10
         - $ref: '#/components/parameters/ApiVersionHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
-          description: No Content
-          content:
-            application/json: {}
+          $ref: '#/components/responses/NoContent'
         "400":
           $ref: '#/components/responses/BadRequest'
         "401":
@@ -1442,10 +1378,8 @@ components:
       description: The number of the page (within a dataset) to start with during data retrieval.
       required: false
       schema:
-        pattern: ^-?(?:0|[1-9]\d*)$
         type:
           - integer
-          - string
         format: int32
         default: 0
     PageSizeQuery:
@@ -1454,10 +1388,8 @@ components:
       description: The number of items to return during data retrieval.
       required: false
       schema:
-        pattern: ^-?(?:0|[1-9]\d*)$
         type:
           - integer
-          - string
         format: int32
         default: 20
   responses:
@@ -1467,12 +1399,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ProblemDetailsBadRequest'
-    Unauthorized:
-      description: Unauthorized — Authentication is required or the provided credentials are invalid or expired.
-      content:
-        application/json:
-          schema:
-            type: string
     Forbidden:
       description: Forbidden — The authenticated user does not have permission to access the requested resource.
       content:
@@ -1485,6 +1411,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ProblemDetails'
+    NoContent:
+      description: No Content - No content was returned; either by design for an Update or Delete, or due to a Null return on a Get.
+    Unauthorized:
+      description: Unauthorized — Authentication is required or the provided credentials are invalid or expired.
+      content:
+        application/json:
+          schema:
+            type: string
   schemas:
     AboutResponse:
       type: object
@@ -1510,13 +1444,14 @@ components:
             - "null"
             - string
     AddResponseInt:
+      required:
+        - id
       type: object
       properties:
         id:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-          format: int64
+          format: int32
           minimum: 1
           maximum: 2147483647
     AddResponseOrderDetails:
@@ -1526,26 +1461,20 @@ components:
       type: object
       properties:
         orderId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         productId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
     AddResponseString:
+      required:
+        - id
       type: object
       properties:
         id:
@@ -1559,16 +1488,12 @@ components:
       type: object
       properties:
         categoryId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         categoryName:
           type:
             - string
@@ -1648,10 +1573,8 @@ components:
       type: object
       properties:
         connectTimeout:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           description: Gets or sets the connection timeout in seconds. A value of 0
             indicates no timeout.
           format: int32
@@ -1670,11 +1593,9 @@ components:
             - string
           description: Gets or sets the data source host (e.g., "localhost")
         port:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           description: Gets or sets the data source port number. A value of null indicates
             the default port for the specified data source type.
           format: int32
@@ -1758,16 +1679,12 @@ components:
             - string
           maxLength: 15
         employeeId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         extension:
           type:
             - "null"
@@ -1820,16 +1737,12 @@ components:
             - string
           maxLength: 15
         reportsTo:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
           description: The employeeId of this employee's manager.
         title:
           type:
@@ -1945,11 +1858,9 @@ components:
       type: object
       properties:
         port:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           description: Gets or sets the OpenTelemetry Port.
           format: int32
         server:
@@ -1972,51 +1883,35 @@ components:
       type: object
       properties:
         discount:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$
           type:
             - number
-            - string
           format: float
           minimum: 0
           maximum: 1
           description: Discount as a fraction of the unit price (0 to 1). Database
             default is 0.
         orderId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         productId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         quantity:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           format: int16
           minimum: 1
           maximum: 32767
-          minLength: 1
-          maxLength: 5
           description: Database default is 1.
         unitPrice:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d{1,4})?$
           type:
             - number
-            - string
           format: double
           minimum: 0
           maximum: 922337203685477.5807
@@ -2031,22 +1926,16 @@ components:
           minLength: 5
           maxLength: 5
         employeeId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         freight:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d{1,4})?$
           type:
             - "null"
             - number
-            - string
           format: double
           minimum: -922337203685477.5808
           maximum: 922337203685477.5807
@@ -2059,16 +1948,12 @@ components:
           description: Valid range is 1753-01-01 through 9999-12-31 (SQL Server
             DATETIME).
         orderId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         requiredDate:
           type:
             - "null"
@@ -2114,16 +1999,12 @@ components:
             - string
           maxLength: 15
         shipVia:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
           description: The shipperId of the shipper used for this order.
     ProblemDetailsBadRequest:
       type: object
@@ -2145,11 +2026,9 @@ components:
           example: Missing request parameter
         status:
           description: The HTTP status code generated by the origin server for this occurrence of the problem.
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           example: 400
         detail:
@@ -2185,11 +2064,9 @@ components:
           example: Insufficient Funds
         status:
           description: The HTTP status code generated by the origin server for this occurrence of the problem.
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           example: 500
         detail:
@@ -2211,30 +2088,22 @@ components:
       type: object
       properties:
         categoryId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         discontinued:
           type: boolean
           description: Database default is false.
         productId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         productName:
           type:
             - string
@@ -2246,61 +2115,43 @@ components:
             - string
           maxLength: 20
         reorderLevel:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int16
           minimum: 0
           maximum: 32767
-          minLength: 1
-          maxLength: 5
           description: Database default is 0.
         supplierId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
         unitPrice:
-          pattern: ^-?(?:0|[1-9]\d*)(?:\.\d{1,4})?$
           type:
             - "null"
             - number
-            - string
           format: double
           minimum: 0
           maximum: 922337203685477.5807
           description: Database default is 0.
         unitsInStock:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int16
           minimum: 0
           maximum: 32767
-          minLength: 1
-          maxLength: 5
           description: Database default is 0.
         unitsOnOrder:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int16
           minimum: 0
           maximum: 32767
-          minLength: 1
-          maxLength: 5
           description: Database default is 0.
     SecurityConfiguration:
       type: object
@@ -2326,10 +2177,8 @@ components:
           description: Gets or sets a flag that indicates whether HTTPS is required for
             the Security metadata endpoint.
         clockSkewSeconds:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - integer
-            - string
           description: Gets or sets the clock skew tolerance, in seconds, applied to token
             expiry validation.
           format: int32
@@ -2361,16 +2210,12 @@ components:
             - string
           maxLength: 24
         shipperId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
     SuppliersDto:
       required:
         - companyName
@@ -2431,16 +2276,12 @@ components:
             - string
           maxLength: 15
         supplierId:
-          pattern: ^-?(?:0|[1-9]\d*)$
           type:
             - "null"
             - integer
-            - string
           format: int32
           minimum: 1
           maximum: 2147483647
-          minLength: 1
-          maxLength: 10
   securitySchemes:
     Bearer:
       type: http
