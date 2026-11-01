@@ -79,9 +79,13 @@ def pytest_terminal_summary(terminalreporter, config):
 
     terminalreporter.section("Failures")
     for label, report in entries:
-        path, line, _ = report.location
-        line = getattr(report, "error_line", None if line is None else line + 1)
-        location = relative(config.rootpath / path)
+        if report.location is None:
+            location = relative(config.rootpath)
+            line = None
+        else:
+            path, line, _ = report.location
+            line = getattr(report, "error_line", None if line is None else line + 1)
+            location = relative(config.rootpath / path)
         if line is not None:
             location = f"{location}:{line}"
         terminalreporter.write_line(f"{label}: {report.nodeid.split('::', 1)[-1]}")
