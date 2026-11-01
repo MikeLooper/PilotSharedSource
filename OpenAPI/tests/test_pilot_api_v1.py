@@ -38,6 +38,12 @@ SPEC_PATH = Path(
 HTTP_METHODS = {"get", "put", "post", "delete", "options", "head", "patch", "trace"}
 INT16_MAX = 32767
 INT32_MAX = 2147483647
+V1_SHARED_RESPONSES = {
+    "400": "#/components/responses/BadRequest",
+    "401": "#/components/responses/Unauthorized",
+    "403": "#/components/responses/Forbidden",
+    "500": "#/components/responses/InternalServerError",
+}
 
 
 class UniqueKeyLoader(yaml.SafeLoader):
@@ -402,8 +408,13 @@ def test_operation_is_documented(path, method, operation):
     declared = {tag.get("name") for tag in SPEC.get("tags", [])}
     for tag in sorted(set(operation.get("tags", [])) - declared):
         violations.append(violation((*here, "tags"), f"Tag {tag} is not declared.", f"Add {tag} to the top-level tags list, or use a declared tag."))
-    if "500" not in operation.get("responses", {}):
-        violations.append(violation((*here, "responses"), "No 500 response is declared.", "Add a 500 response that references InternalServerError."))
+    response = operation.get("responses", {}).get("500")
+    reference = response.get("$ref") if isinstance(response, dict) else None
+    expected = V1_SHARED_RESPONSES["500"]
+    if reference != expected:
+        violations.append(
+            violation((*here, "responses", "500"), f"Found response reference {reference}.", f"Set it to {expected}.")
+        )
     check(violations)
 
 
@@ -451,8 +462,13 @@ def test_v1_operation_has_shared_contract(path, method, operation):
         violations.append(
             violation((*here, "security"), f"Found security {operation.get('security')}.", "Set security to a single Bearer entry with no scopes.")
         )
-    for status in sorted({"400", "401", "403", "500"} - set(operation.get("responses", {}))):
-        violations.append(violation((*here, "responses"), f"No {status} response is declared.", f"Add a {status} response that references the shared response."))
+    for status, expected in V1_SHARED_RESPONSES.items():
+        response = operation.get("responses", {}).get(status)
+        reference = response.get("$ref") if isinstance(response, dict) else None
+        if reference != expected:
+            violations.append(
+                violation((*here, "responses", status), f"Found response reference {reference}.", f"Set it to {expected}.")
+            )
     missing = {"ApiVersionHeader", "CorrelationIdHeader"} - parameter_refs(operation)
     if missing:
         violations.append(violation((*here, "parameters"), f"Missing shared parameters: {sorted(missing)}.", required_header_fix(missing)))
