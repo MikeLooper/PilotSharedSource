@@ -10,11 +10,11 @@ Required inputs/arguments:
     environment variable to test a different copy of the specification.
 
 Required environment/dependencies:
-    Python 3.10+ and the packages in OpenAPI/tests/requirements.txt.
+    Python 3.10+ and the packages in tests/OpenApi/requirements.txt.
 
 Example usage:
-    python -m pip install -r OpenAPI/tests/requirements.txt
-    python -m pytest OpenAPI/tests
+    python -m pip install -r tests/OpenApi/requirements.txt
+    python -m pytest tests/OpenApi
 
 Expected outputs and failure behavior:
     Prints a pytest summary. Exits 0 when all tests pass and non-zero on any
@@ -33,7 +33,9 @@ from jsonschema import Draft202012Validator, FormatChecker
 from openapi_spec_validator import OpenAPIV31SpecValidator
 
 SPEC_PATH = Path(
-    os.environ.get("OPENAPI_SPEC", Path(__file__).parents[1] / "PilotApi_v1.yaml")
+    os.environ.get(
+        "OPENAPI_SPEC", Path(__file__).parents[2] / "OpenAPI" / "PilotApi_v1.yaml"
+    )
 )
 HTTP_METHODS = {"get", "put", "post", "delete", "options", "head", "patch", "trace"}
 INT16_MAX = 32767
