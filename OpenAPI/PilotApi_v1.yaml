@@ -20,6 +20,10 @@ paths:
       tags:
         - System
       summary: Return an OK.
+      parameters:
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -40,6 +44,9 @@ paths:
           schema:
             type: boolean
             default: false
+        - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
+        - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
           description: OK
@@ -58,6 +65,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -96,6 +104,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -123,6 +132,7 @@ paths:
       summary: Adds a new DTO object of a category record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -157,6 +167,7 @@ paths:
       summary: Updates an existing DTO object of a category record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -196,6 +207,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -219,6 +231,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -255,6 +268,7 @@ paths:
             minLength: 5
             maxLength: 5
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -282,6 +296,7 @@ paths:
       summary: Adds a new customer record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -316,6 +331,7 @@ paths:
       summary: Updates an existing customer record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -353,6 +369,7 @@ paths:
             minLength: 5
             maxLength: 5
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -376,6 +393,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -414,6 +432,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -441,6 +460,7 @@ paths:
       summary: Adds a new employee record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -475,6 +495,7 @@ paths:
       summary: Updates an existing employee record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -514,6 +535,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -537,6 +559,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -584,6 +607,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -611,6 +635,7 @@ paths:
       summary: Adds a new OrderDetails record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -645,6 +670,7 @@ paths:
       summary: Updates an existing OrderDetails record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -693,6 +719,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -716,6 +743,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -754,6 +782,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -781,6 +810,7 @@ paths:
       summary: Adds a new order record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -815,6 +845,7 @@ paths:
       summary: Updates an existing order record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -854,6 +885,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -877,6 +909,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -915,6 +948,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -942,6 +976,7 @@ paths:
       summary: Adds a new product record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -976,6 +1011,7 @@ paths:
       summary: Updates an existing product record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -1015,6 +1051,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -1038,6 +1075,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -1076,6 +1114,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -1103,6 +1142,7 @@ paths:
       summary: Adds a new shipper record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -1137,6 +1177,7 @@ paths:
       summary: Updates an existing shipper record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -1176,6 +1217,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -1199,6 +1241,7 @@ paths:
         - $ref: '#/components/parameters/PageQuery'
         - $ref: '#/components/parameters/PageSizeQuery'
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -1237,6 +1280,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "200":
@@ -1264,6 +1308,7 @@ paths:
       summary: Adds a new supplier record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -1298,6 +1343,7 @@ paths:
       summary: Updates an existing supplier record.
       parameters:
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       requestBody:
         content:
@@ -1337,6 +1383,7 @@ paths:
             minimum: 1
             maximum: 2147483647
         - $ref: '#/components/parameters/ApiVersionHeader'
+        - $ref: '#/components/parameters/CallerNameHeader'
         - $ref: '#/components/parameters/CorrelationIdHeader'
       responses:
         "204":
@@ -1362,6 +1409,15 @@ components:
         type: string
         maxLength: 15
         example: "1.2.3"
+    CallerNameHeader:
+      name: X-Caller-Name
+      in: header
+      description: Name of the caller.
+      required: false
+      schema:
+        type: string
+        maxLength: 100
+        example: "PilotAngularUi"
     CorrelationIdHeader:
       name: X-Correlation-Id
       in: header

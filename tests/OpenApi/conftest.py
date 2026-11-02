@@ -6,13 +6,13 @@ Purpose:
     what was found there, and how to fix it.
 
 Required inputs/arguments:
-    None. Pytest loads this file automatically when running OpenAPI/tests.
+    None. Pytest loads this file automatically when running tests/OpenApi.
 
 Required environment/dependencies:
-    Python 3.10+ and the packages in OpenAPI/tests/requirements.txt.
+    Python 3.10+ and the packages in tests/OpenApi/requirements.txt.
 
 Example usage:
-    python -m pytest OpenAPI/tests
+    python -m pytest tests/OpenApi
 
 Expected outputs and failure behavior:
     Prints a "Failures" section before the pytest summary line, or prints nothing

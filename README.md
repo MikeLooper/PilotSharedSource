@@ -69,11 +69,11 @@ git commit -m "Update PilotSharedSource submodule"
 Notable contents of this repository:
 
 1. OpenAPI\PilotApi_v1.yaml - An OpenAPI specification for an API based upon the Northwind database.
-2. OpenAPI\tests - Validation tests for the OpenAPI specification.
+2. tests\OpenApi - Validation tests for the OpenAPI specification.
 
 ## Validating the OpenAPI Specification
 
-The tests in `OpenAPI/tests` read `OpenAPI/PilotApi_v1.yaml` directly. They do not need a running API or a database, and they do not modify the specification.
+The tests in `tests/OpenApi` read `OpenAPI/PilotApi_v1.yaml` directly. They do not need a running API or a database, and they do not modify the specification.
 
 | Check | What it verifies |
 | --- | --- |
@@ -91,8 +91,8 @@ Windows (PowerShell):
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-python -m pip install -r OpenAPI/tests/requirements.txt
-python -m pytest OpenAPI/tests
+python -m pip install -r tests/OpenApi/requirements.txt
+python -m pytest tests/OpenApi
 ```
 
 Windows (Command Prompt):
@@ -100,8 +100,8 @@ Windows (Command Prompt):
 ```bat
 python -m venv .venv
 .venv\Scripts\activate.bat
-python -m pip install -r OpenAPI/tests/requirements.txt
-python -m pytest OpenAPI/tests
+python -m pip install -r tests/OpenApi/requirements.txt
+python -m pytest tests/OpenApi
 ```
 
 Linux or macOS:
@@ -109,11 +109,22 @@ Linux or macOS:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r OpenAPI/tests/requirements.txt
-python -m pytest OpenAPI/tests
+python -m pip install -r tests/OpenApi/requirements.txt
+python -m pytest tests/OpenApi
 ```
 
-To test a different copy of the specification, set the `OPENAPI_SPEC` environment variable to its path before running `pytest`. From a consuming repository, replace `OpenAPI/tests` with `shared/PilotSharedSource/OpenAPI/tests`.
+To test a different copy of the specification, set the `OPENAPI_SPEC` environment variable to its path before running `pytest`. From a consuming repository, replace `tests/OpenApi` with `shared/PilotSharedSource/tests/OpenApi`.
+
+### Running the tests in VS Code
+
+This repository includes a [.vscode/launch.json](./.vscode/launch.json) debug configuration named **Python: Run Pilot API v1 Tests** that runs `tests/OpenApi/test_pilot_api_v1.py` with `pytest`.
+
+1. Install the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) (which includes the `debugpy` debugger) in VS Code.
+2. Create and activate a virtual environment, then install the test dependencies as shown above, so VS Code has an interpreter with `pytest` and the other required packages available.
+3. Select that interpreter as the workspace's Python interpreter (`Python: Select Interpreter` from the Command Palette).
+4. Open the **Run and Debug** view (`Ctrl+Shift+D`), choose **Python: Run Pilot API v1 Tests** from the configuration dropdown, and press `F5` (or click the green run arrow) to run or debug the tests, including setting breakpoints in the test code.
+
+Alternatively, with the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) installed, use the **Testing** view (the flask icon in the Activity Bar) to discover and run the tests individually. The repository's [.vscode/settings.json](./.vscode/settings.json) already configures `pytest` as the test framework against the `tests/OpenApi` directory, so no manual `Python: Configure Tests` step is required.
 
 ### Reading the results
 
@@ -122,7 +133,7 @@ To test a different copy of the specification, set the `OPENAPI_SPEC` environmen
 
   ```text
   FAILED: test_schema_is_internally_consistent[#/components/schemas/CategoriesDto]
-    Test code: OpenAPI\tests\test_pilot_api_v1.py:336
+    Test code: tests\OpenApi\test_pilot_api_v1.py:336
     OpenAPI\PilotApi_v1.yaml:1482 (#/components/schemas/CategoriesDto/required)
       Problem: categoryName is required but is not defined under properties.
       Fix: Define categoryName, or remove it from required.
